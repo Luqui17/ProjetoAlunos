@@ -1,0 +1,24 @@
+﻿body {
+    padding-top: 180px;
+    background: #2F4F4F;
+}
+
+.card {
+    color: white;
+    background-color: #212529;
+    box-shadow: 10px 16px 18px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-body h1 {
+    text-align: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+.navbar-brand {
+    margin-left: 10px;
+}
