@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TelaCadastro.aspx.cs" Inherits="Alunos.Views.TelaCadastro" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TelaCasdastroDeCursos.aspx.cs" Inherits="Alunos.Views.TelaCasdastroDeCursos" EnableEventValidation="false"%>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -34,24 +34,21 @@
             <div class="col-6 offset-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <h1>Cadastro</h1>
+                        <h1>Cadastro de Curso</h1>
                         <form runat="server" method="post">
                             <div class="form-group" runat="server">
                                 <br />
-                                <label for="nome">Nome :</label>
-                                <input class="form-control" type="text" name="txbNome" id="nome"
-                                    placeholder="Digite o seu nome..." runat="server" required />
+                                <label for="nomeCurso">Nome do Curso :</label>
+                                <input class="form-control" type="text" name="txbNomeCurso" id="nomeCurso"
+                                    placeholder="Digite o nome do curso..." runat="server" required />
                             </div>
                             <div class="form-group" runat="server">
                                 <br />
-                                <label for="email">Email :</label>
+                                <label for="professor">Professor :</label>
                             </div>
                             <div class="form-group" runat="server">
-                                <input class="form-control" type="email" name="txbEmail" id="email"
-                                    placeholder="Digite o seu email..." runat="server" required /><br />
-                                <label for="senha">Senha :</label>
-                                <input class="form-control" type="password" name="txbSsenha" id="senha"
-                                    placeholder="Digite a sua senha..." runat="server" required />
+                                <input class="form-control" type="text" name="txbProfessor" id="professor"
+                                    placeholder="Digite o nome do professor..." runat="server" required /><br />
                             </div>
                             <div class="form-group text-center" runat="server">
                                 <br />

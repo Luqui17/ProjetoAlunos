@@ -11,7 +11,7 @@ namespace Alunos.Views
 {
 
 
-    public partial class TelaInicial
+    public partial class CursosCadastrados
     {
 
         /// <summary>
@@ -33,31 +33,13 @@ namespace Alunos.Views
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
-        /// gvAlunos control.
+        /// gvCursos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAlunos;
-
-        /// <summary>
-        /// DetailsView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
-
-        /// <summary>
-        /// AlunosDB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinqDataSource AlunosDB;
+        protected global::System.Web.UI.WebControls.GridView gvCursos;
 
         /// <summary>
         /// Button2 control.
@@ -67,5 +49,14 @@ namespace Alunos.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
+
+        /// <summary>
+        /// Repeater1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
     }
 }

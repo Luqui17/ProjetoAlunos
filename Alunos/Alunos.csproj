@@ -71,6 +71,9 @@
     <Reference Include="MongoDB.Driver.Core, Version=2.19.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Driver.Core.2.19.0\lib\net472\MongoDB.Driver.Core.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Driver.Legacy, Version=2.19.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.2.19.0\lib\net472\MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Libmongocrypt, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Libmongocrypt.1.7.0\lib\net472\MongoDB.Libmongocrypt.dll</HintPath>
     </Reference>
@@ -114,6 +117,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
@@ -197,24 +201,52 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="mongocrypt.dll" />
+    <Content Include="Views\CursosCadastrados.aspx" />
     <Content Include="Views\TelaCadastro.aspx" />
+    <Content Include="Views\TelaCadastroAluno.aspx" />
+    <Content Include="Views\TelaCasdastroDeCursos.aspx" />
     <Content Include="Views\TelaDeLogin.aspx" />
     <Content Include="Views\TelaInicial.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection\Conexao.cs" />
-    <Compile Include="Models\AlunosTeste.cs" />
-    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Notes.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\CadastrarAluno.cs" />
+    <Compile Include="Service\CadastrarCurso.cs" />
     <Compile Include="Service\CadastrarUsuario.cs" />
     <Compile Include="Service\Autenticacao.cs" />
+    <Compile Include="Views\CursosCadastrados.aspx.cs">
+      <DependentUpon>CursosCadastrados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CursosCadastrados.aspx.designer.cs">
+      <DependentUpon>CursosCadastrados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\TelaCadastro.aspx.cs">
       <DependentUpon>TelaCadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\TelaCadastro.aspx.designer.cs">
       <DependentUpon>TelaCadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TelaCadastroAluno.aspx.cs">
+      <DependentUpon>TelaCadastroAluno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TelaCadastroAluno.aspx.designer.cs">
+      <DependentUpon>TelaCadastroAluno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TelaCasdastroDeCursos.aspx.cs">
+      <DependentUpon>TelaCasdastroDeCursos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TelaCasdastroDeCursos.aspx.designer.cs">
+      <DependentUpon>TelaCasdastroDeCursos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\TelaDeLogin.aspx.cs">
       <DependentUpon>TelaDeLogin.aspx</DependentUpon>

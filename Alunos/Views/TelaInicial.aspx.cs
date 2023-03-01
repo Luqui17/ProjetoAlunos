@@ -1,4 +1,5 @@
 ﻿using Alunos.Connection;
+using Alunos.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace Alunos.Views
 {
@@ -15,7 +17,6 @@ namespace Alunos.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 PopulateGridview();
@@ -23,32 +24,90 @@ namespace Alunos.Views
         }
         void PopulateGridview()
         {
-            DataTable dtbl = new DataTable();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Nome");
+            dt.Columns.Add("CPF");
+            dt.Columns.Add("Idade");
             var conexao = new Conexao();
-            var listaLivros =  conexao.Alunos.Find(condicao).ToListAsync();
-            foreach (var doc in listaLivros)
+            var listaAlunos = conexao.Student.Find(new BsonDocument()).ToList();
+            foreach (var aluno in listaAlunos)
             {
-                Console.WriteLine(doc.ToJson<Livro>());
+                var row = dt.NewRow();
 
-            }
-            Console.WriteLine("Fim da Lista");
-
-
-            if (dtbl.Rows.Count > 0)
-            {
-                gvAlunos.DataSource = dtbl;
+                row["ID"] = aluno.Id;
+                row["Nome"] = aluno.Name;
+                row["CPF"] = aluno.CPF;
+                row["Idade"] = aluno.Age;
+                dt.Rows.Add(row);
+                gvAlunos.DataSource = dt;
                 gvAlunos.DataBind();
             }
-            else
+            if (dt.Rows.Count <= 0)
             {
-                dtbl.Rows.Add(dtbl.NewRow());
-                gvAlunos.DataSource = dtbl;
-                gvAlunos.DataBind();
-                gvAlunos.Rows[0].Cells.Clear();
-                gvAlunos.Rows[0].Cells.Add(new TableCell());
-                gvAlunos.Rows[0].Cells[0].ColumnSpan = dtbl.Columns.Count;
                 gvAlunos.Rows[0].Cells[0].Text = "Nenhum dado encontrado!";
-                // gvAlunos.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
             }
         }
+        protected void AcessarAluno(object sender, EventArgs e)
+        {
+            Page.Response.Redirect("TelaCadastroAluno.apx");
+        }
+        protected void Button2_Click1(object sender, EventArgs e)
+        {
+            Page.Response.Redirect("TelaCadastroAluno.aspx");
+        }
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvAlunos.EditIndex = e.NewEditIndex;
+            PopulateGridview();
+        }
+        protected void gvAlunos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvAlunos.EditIndex = -1;
+            PopulateGridview();
+        }
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                var conexao = new Conexao();
+                var construtor = Builders<Student>.Filter;
+                var condicao = construtor.Eq(x => x.Id, (gvAlunos.Rows[e.RowIndex].FindControl("txtId") as System.Web.UI.WebControls.TextBox).Text.Trim());
+                var contrutorAlteracao = Builders<Student>.Update;
+                var condicaoAlteracao = contrutorAlteracao.Set(x => x.Name, (gvAlunos.Rows[e.RowIndex].FindControl("txtNome") as System.Web.UI.WebControls.TextBox).Text.Trim());
+                conexao.Student.UpdateOne(condicao, condicaoAlteracao);
+
+                var condicaoAlteracaoCPF = contrutorAlteracao.Set(x => x.CPF, (gvAlunos.Rows[e.RowIndex].FindControl("txtCPF") as System.Web.UI.WebControls.TextBox).Text.Trim());
+                conexao.Student.UpdateOne(condicao, condicaoAlteracaoCPF);
+                
+                PopulateGridview();
+                Page.Response.Redirect("TelaInicial.aspx");
+            }
+            catch (MongoAuthenticationException)
+            {
+                throw;
+            }
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Não é possível alterar o ID");
+                Page.Response.Redirect("TelaInicial.aspx");
+                throw;
+            }
+        }
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            var conexao = new Conexao();
+            var construtor = Builders<Student>.Filter;
+            var condicao = construtor.Eq(x => x.Id, (gvAlunos.DataKeys[e.RowIndex].Value.ToString()));
+            var contrutorAlteracao = Builders<Student>.Update;
+            conexao.Student.DeleteOne(condicao);
+            PopulateGridview();
+            Page.Response.Redirect("TelaInicial.aspx");
+        }
+
+        protected void DetailsView1_PageIndexChanging(object sender, DetailsViewPageEventArgs e)
+        {
+
+        }
+    }
 }

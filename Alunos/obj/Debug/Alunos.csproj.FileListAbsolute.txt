@@ -61,6 +61,7 @@ C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\Microsoft.Win32.Registry.d
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\MongoDB.Bson.dll
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\MongoDB.Driver.Core.dll
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\MongoDB.Driver.dll
+C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\MongoDB.Driver.Legacy.dll
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\MongoDB.Libmongocrypt.dll
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\SharpCompress.dll
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\Snappier.dll
@@ -84,6 +85,7 @@ C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\Microsoft.Win32.Registry.x
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\MongoDB.Bson.xml
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\MongoDB.Driver.xml
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\MongoDB.Driver.Core.xml
+C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\MongoDB.Driver.Legacy.xml
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\Snappier.xml
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\System.Buffers.xml
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\bin\System.Memory.xml
@@ -98,4 +100,3 @@ C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\obj\Debug\Alunos.csproj.CoreCo
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\obj\Debug\Alunos.csproj.CopyComplete
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\obj\Debug\Alunos.dll
 C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\obj\Debug\Alunos.pdb
-C:\Users\Pichau\source\repos\ProjetoAlunos\Alunos\obj\Debug\Alunos.csproj.AssemblyReference.cache

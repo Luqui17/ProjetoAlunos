@@ -17,13 +17,12 @@ namespace Alunos.Service
         public bool verificarLogin(string email, string senha)
         {
             Conexao con = new Conexao();
-            bool exists = con.Usuarios.Find(x => x.Email == email).Any() & con.Usuarios.Find(x => x.Senha == senha).Any();
+            bool exists = con.Users.Find(x => x.Mail == email).Any() & con.Users.Find(x => x.Password == senha).Any();
             if (exists == true)
             {
                 return true;
             }
             return false;
         }
-       
     }
 }

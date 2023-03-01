@@ -13,9 +13,9 @@ namespace Alunos.Service
         public CadastrarUsuario(string nome, string email, string senha)
         {
             var conexaoBiblioteca = new Conexao();
-            Usuario usuario = new Usuario(nome, email, senha);
+            User usuario = new User(nome, email, senha);
 
-            conexaoBiblioteca.Usuarios.InsertOne(usuario);
+            conexaoBiblioteca.Users.InsertOne(usuario);
         }
         
     }

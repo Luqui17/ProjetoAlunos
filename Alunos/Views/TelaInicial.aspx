@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Formulário de Cadastro</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../js/bootstrap.min.js" />
+    <link rel="stylesheet" href="../css/style.css" />
 </head>
 
 <form id="form1" runat="server">
@@ -33,7 +33,6 @@
     <body runat="server">
         <div class="d-md-flex justify-content-md-center" padding = "2px" margin = "2px">
             <asp:TextBox type="bi-search" ID="TextBox1" runat="server" Width="225px" class="form-control" aria-placeholder="Pesquisar"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" Text="Pesquisar" class="btn btn-primary" OnClick="Button1_Click"/>
             <br />
         </div>
             <br />
@@ -47,6 +46,15 @@
                 <%-- Theme Properties --%>
                 <AlternatingRowStyle BackColor="#CCCCCC" />
                 <Columns>
+                     <asp:TemplateField HeaderText="Id">
+                        <ItemTemplate>
+                            <asp:Label Text='<%# Eval("ID") %>' runat="server" />
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtId" Text='<%# Eval("ID") %>' runat="server" />
+                        </EditItemTemplate>
+                        <ControlStyle ForeColor="Black" />
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Nome">
                         <ItemTemplate>
                             <asp:Label Text='<%# Eval("Nome") %>' runat="server" />
@@ -56,21 +64,12 @@
                         </EditItemTemplate>
                         <ControlStyle ForeColor="Black" />
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Data Nascimento">
+                    <asp:TemplateField HeaderText="Idade">
                         <ItemTemplate>
-                            <asp:Label Text='<%# Eval("DataNascimento") %>' runat="server" />
+                            <asp:Label Text='<%# Eval("Idade") %>' runat="server" />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtDataNascimento" Text='<%# Eval("DataNascimento") %>' runat="server" />
-                        </EditItemTemplate>
-                        <ControlStyle ForeColor="Black" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Turma">
-                        <ItemTemplate>
-                            <asp:Label Text='<%# Eval("Turma") %>' runat="server" />
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtTurma" Text='<%# Eval("Turma") %>' runat="server" />
+                            <asp:TextBox ID="txtDataNascimento" Text='<%# Eval("Idade") %>' runat="server" />
                         </EditItemTemplate>
                         <ControlStyle ForeColor="Black" />
                     </asp:TemplateField>
@@ -104,9 +103,22 @@
                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                 <SortedDescendingHeaderStyle BackColor="#383838" />
             </asp:GridView>
+            <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="AlunosDB" Height="50px" OnPageIndexChanging="DetailsView1_PageIndexChanging" Width="864px">
+            <Fields>
+                <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
+                <asp:BoundField DataField="Name" HeaderText="Name" ReadOnly="True" SortExpression="Name" />
+                <asp:BoundField DataField="TeacherName" HeaderText="TeacherName" ReadOnly="True" SortExpression="TeacherName" />
+            </Fields>
+        </asp:DetailsView>
+        <asp:LinqDataSource ID="AlunosDB" runat="server" ContextTypeName="Alunos.Models.Student" EntityTypeName="" Select="new (Id, Name, TeacherName)" TableName="Courses" Where="Id == @Id">
+            <WhereParameters>
+                <asp:ControlParameter ControlID="gvAlunos" Name="Id" PropertyName="SelectedValue" Type="String" />
+            </WhereParameters>
+        </asp:LinqDataSource>
         <div class="container">
            <asp:Button ID="Button2" runat="server" Text="Cadastrar Aluno" class="btn btn-success" OnClick="Button2_Click1"/>
         </div>
     </body>
+    <script src="../js/bootstrap.min.js"></script>    
 </form>
 </html>
